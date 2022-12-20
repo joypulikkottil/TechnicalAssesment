@@ -1,0 +1,32 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12">
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12">
+            <div class="card bg-light border-1 p-4 m-2">
+                <form id="idLogin" method="post">
+                    <div class="container">
+                        <div class="form-group">
+                            <label for="inputOrderNo">Username</label>
+                            <input type="text" class="form-control" asp-for="UserName">
+                            @Html.ValidationMessageFor(f=>f.UserName,"",new { @class="text-danger"})
+                        </div>
+                        <div class="form-group">
+                            <label for="inputOrderNo">Password</label>
+                            <input type="password" class="form-control" asp-for="Password">
+                            @Html.ValidationMessageFor(f=>f.Password,"",new { @class="text-danger"})
+                        </div>
+                        <br />
+                        <input type="submit" class="btn btn-primary" value="Submit" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

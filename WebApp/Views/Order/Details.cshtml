@@ -1,0 +1,88 @@
+﻿@model IEnumerable<DbFirst.Entities.Order>
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<h1>Order Details</h1>
+
+<div class="text-end">
+    <a class="" asp-area="" asp-controller="Order" asp-action="Index">Back</a>
+</div>
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="inputOrderNo">@Html.DisplayNameFor(model => model.OrderNo)</label>
+                <input type="text" readonly class="form-control" id="inputOrderNo" value="@Html.DisplayFor(modelItem => item.OrderNo)">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="inputOrderDate">@Html.DisplayNameFor(model => model.OrderDate)</label>
+                <input type="text" readonly class="form-control" id="inputOrderDate" value="@Html.DisplayFor(modelItem => item.OrderDate)">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="inputVendorName">@Html.DisplayNameFor(model => model.Vendor.Name)</label>
+                <input type="text" readonly class="form-control" id="inputVendorName" value="@Html.DisplayFor(modelItem => item.Vendor.Name)">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="inputCurrencyName">@Html.DisplayNameFor(model => model.Currency.Name)</label>
+                <input type="text" readonly class="form-control" id="inputCurrencyName" value="@Html.DisplayFor(modelItem => item.Currency.Name)">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="inputAmountName">@Html.DisplayNameFor(model => model.Amount)</label>
+                <input type="text" readonly class="form-control" id="inputAmountName" value="@Html.DisplayFor(modelItem => item.Amount)">
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Serial No
+                </th>
+                <th>
+                    Product Name
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Unit Price
+                </th>
+                <th>
+                    Total
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var items in item.OrderItems)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItems => items.SerialNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItems => items.Product.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItems => items.Quatity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItems => items.UnitPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItems => items.Amount)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
